@@ -8,3 +8,6 @@ numpy
 ftfy
 regex
 tqdm
+timm
+loguru
+natsort
