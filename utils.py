@@ -256,3 +256,26 @@ def init_distributed_mode(args):
                                          world_size=args.world_size, rank=args.rank)
     torch.distributed.barrier()
     setup_for_distributed(args.rank == 0)
+
+
+# -----------------------------------------------------------------------------
+# Functions for parsing args
+# -----------------------------------------------------------------------------
+import copy
+import os
+from ast import literal_eval
+
+def load_cfg_from_cfg_file(file):
+    cfg = {}
+    assert os.path.isfile(file) and file.endswith('.yaml'), \
+        '{} is not a yaml file'.format(file)
+
+    with open(file, 'r') as f:
+        cfg_from_file = yaml.safe_load(f)
+
+    for key in cfg_from_file:
+        for k, v in cfg_from_file[key].items():
+            cfg[k] = v
+
+    cfg = CfgNode(cfg)
+    return cfg
