@@ -1,0 +1,11 @@
+demo:
+  dataset: 'demo'
+  data_path: 'helpers'
+  label_path: 'helpers/labels'
+  experts: ['infred']  # 'none' for PrismerZ
+
+  image_resolution: 480
+  prismer_model: 'prismer_base'  # 'prismer-large' for Prismer(Z)-Large
+  freeze: 'freeze_vision'
+
+  prefix: 'A picture of'
